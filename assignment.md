@@ -20,8 +20,35 @@ Each entity has the following attributes:
 
 Answer:
 
-```dbml
+DBML:
+```
+Table users {
+  id int [pk, increment]
+  username varchar
+  email varchar
+  created_at datetime
+}
 
+Table posts {
+  id int [pk, increment]
+  title varchar
+  body text [note: 'Content of the post']
+  user_id int
+  status boolean
+  created_at datetime
+}
+
+Table follows {
+  following_user_id int
+  followed_user_id int
+  created_at datetime
+}
+
+Ref: posts.user_id > users.id // one user to many posts
+
+Ref: follows.following_user_id > users.id // one user to many following users
+
+Ref: follows.followed_user_id > users.id // one user to many followed users
 ```
 
 ### Question 2
@@ -37,8 +64,46 @@ There are 4 entities, think of what attributes each entity should have.
 
 Answer:
 
-```dbml
+DBML:
+```
+Table customers {
+  id int [pk, increment]
+  name varchar
+  address varchar
+  phone varchar
+  email varchar
+  created_at datetime
+}
 
+Table books {
+  id int [pk, increment]
+  title varchar
+  author varchar
+  price decimal
+  isbn varchar
+  created_at datetime
+}
+
+Table carts {
+  id int [pk, increment]
+  customer_id int
+  book_id int
+  created_at datetime
+}
+
+Table cart_items {
+  id int [pk, increment]
+  cart_id int
+  book_id int
+  quantity int
+  created_at datetime
+}
+
+Ref: carts.customer_id > customers.id // one customer to many carts
+
+Ref: cart_items.cart_id > carts.id // one cart to many cart items
+
+Ref: cart_items.book_id > books.id // one book to many cart items
 ```
 
 ## Submission

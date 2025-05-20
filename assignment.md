@@ -20,8 +20,7 @@ Each entity has the following attributes:
 
 Answer:
 
-DBML:
-```
+```dbml
 Table users {
   id int [pk, increment]
   username varchar
@@ -64,8 +63,7 @@ There are 4 entities, think of what attributes each entity should have.
 
 Answer:
 
-DBML:
-```
+```dbml
 Table customers {
   id int [pk, increment]
   name varchar
